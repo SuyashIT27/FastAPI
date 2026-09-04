@@ -23,4 +23,10 @@ def UserNumber(number):
 @app.get("/username")
 def userName(name:str=None):
   return {"name":name}
-
+#Now adding the multiple routes
+@app.get("/products")
+def product(name:str=None,Quentity:int=0):
+  return{
+    "Product Name":name,
+    "Quentity":Quentity
+  }
