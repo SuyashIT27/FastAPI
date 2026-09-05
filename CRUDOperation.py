@@ -29,4 +29,29 @@ def geetingData(todo_id:int):
       }
   return {
     "message":"No data is found"
+  }
+#updating the existing data 
+@app.put("/todo/{todo_id}")
+def updateData(todo_id:int,data:ToDo):
+  for index,todo in enumerate(todos):
+    if todo.id==todo_id:
+      todos[index]=data
+      return{
+        "message":"Data updated sucessfully",
+        "Data":data
+      }
+  return {
+    "Error":"there is some error"
+  }    
+#deleting the data
+@app.delete("/todo/{todo_id}")
+def deletingData(todo_id:int):
+  for idx,todo in enumerate(todos):
+    if todo.id==todo_id:
+      todo.pop(idx)
+      return{
+        "Message":"Data deleted sucessfully"
+      }
+  return {
+    "Error":"Data not found"
   }  
